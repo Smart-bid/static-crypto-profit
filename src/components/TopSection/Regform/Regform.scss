@@ -1,0 +1,232 @@
+.form {
+    padding-left: 0;
+    @media (max-width: 1200px) {
+        padding-left: 15px;
+        padding-right: 0;
+    }
+    @media (max-width: 990px) {
+        padding: 0;
+    }
+}
+
+.regform {
+    position: relative;
+    background: #ffffff;
+    @media (max-width: 990px) {
+        max-width: 100%;
+    }
+    .reg-title {
+        position: absolute;
+        top: -80px;
+        padding: 15px 20px;
+        color: #ffffff;
+        border-radius: 3px 3px 0 0;
+        text-align: center;
+        h3 {
+            font-size: 28px;
+            font-weight: 900;
+            color: $purple;
+            line-height: 1.2;
+            margin-bottom: 0;
+            @media(max-width: 768px) {
+                font-size: 24px;
+            }
+            @media(max-width: 479px) {
+                font-size: 24px * 0.75;
+            }
+        }
+        span {
+            display: block;
+            font-family: $rounded;
+            font-size: 21px;
+            font-weight: 700;
+            line-height: 1;
+            color: $grey;
+        }
+    }
+    .card {
+        padding: 20px 25px 10px 25px;
+        border-radius: 0 !important;
+        border-top: 5px solid $blue;
+        box-shadow: 0 10px 15px 0 rgba(0,0,0,.15);
+        .MuiFormControlLabel-root {
+            margin: 0 !important;
+        }
+        .card-body {
+            position: relative;
+            font-size: 14px;
+            background: #fff;
+            width: 100%;
+            padding: 0;
+            .btn-secondary {
+                width: 100%;
+                font-size: 1.5em;
+                font-weight: 900;
+                color: #ffffff;
+                background: $orange;
+                padding: 0.70em 1.25em;
+                border-radius: .15rem;
+                cursor: pointer;
+                box-shadow: 0 2px 0 #d87e09;
+                border: none !important;
+                opacity: 1;
+                transition: all .1s linear;
+                &:hover {
+                    opacity: .9;
+                }
+            }
+            .support_text {
+                max-width: 170px;
+                font-size: .65em;
+                line-height: 1.25;
+                color: #333;
+                margin-top: 8px;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+                >.lock-icon {
+                    &:before {
+                        content: '';
+                        display: inline-block;
+                        vertical-align: middle;
+                        width: 14px;
+                        height: 14px;
+                        background-image: url("./lock.svg");
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.cardb {
+    .MuiInputBase-input {
+        position: relative;
+        margin: 0;
+        width: 100%;
+        padding: .5em .75em;
+        height: 100%;
+        background-color: #fff;
+        color: #333;
+        border: none;
+        border-radius: .15rem;
+        font-size: 1em;
+        line-height: 1;
+        transition: 100ms border-color linear,100ms background-color linear;
+        box-sizing: border-box;
+    }
+    .MuiOutlinedInput-root {
+        border-radius: 0;
+        outline: 0;
+        &.Mui-focused {
+            .MuiOutlinedInput-notchedOutline {
+                border-color: rgba(82, 188, 230, 0.5) !important;
+            }
+        }
+    }
+    .MuiFormControl-root, .MuiInputBase-root {
+        height: 35px;
+        margin-bottom: 1em;
+    }
+    .MuiInputBase-root {
+        font-size: 12px;
+    }
+    .MuiFormLabel-root {
+        font-size: 12px;
+    }
+    .MuiFormLabel-root.Mui-focused {
+        background: #ffffff!important;
+        color: rgba(0, 0, 0, .75);
+        padding: 0 5px;
+    }
+    .MuiInputLabel-outlined {
+        transform: translate(14px, 12px) scale(1);
+        background: transparent!important;
+    }
+    .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+        background-color: rgba(82,188,230,.05);
+        border: 1px solid rgba(82,188,230,.5);
+    }
+    .left, .right {
+        width: calc(50% - .375em);
+    }
+    .left {
+        margin-right: .375em;
+    }
+    .right {
+        margin-left: .375em;
+    }
+    .large {
+        width: 100%;
+    }
+    .checkbox_text {
+        color: #666!important;
+        font-size: .75em;
+        line-height: 1.25;
+    }
+    .PrivateSwitchBase-root-152 {
+        padding: 0 10px 0 0;
+    }
+
+
+}
+
+//Agree checkboxes
+.Component-root-145 {
+    color: #ccc !important;
+}
+
+//Hide text Errors
+.inputError {
+    display: none !important;
+}
+
+//Dropdown password window
+.popper {
+    min-width: 420px !important;
+    //left: -71px !important;
+    top: 10px !important;
+}
+.MuiList-root {
+    max-width: 420px;
+    padding: 8px !important;
+    border: 1px solid rgb(240, 72, 42) !important;
+    &.req_list {
+        .MuiListItem-root {
+            font-size: 12px !important;
+            padding: 0;
+            .MuiListItemIcon-root {
+                min-width: initial !important;
+                svg {
+                    width: 17px;
+                    height: 15px;
+                }
+            }
+        }
+    }
+}
+
+//Agree items
+.MuiFormGroup-root {
+    &.checkbox_text {
+        align-items: center;
+        #feebback {
+            display: none;
+        }
+    }
+}
+
+
+//Res Error (Last step => "System could not register you")
+.resError {
+    &.card-title {
+        color: #333;
+        text-align: center;
+    }
+}
+
+.MuiTooltip-popper {
+    max-width: 250px;
+}

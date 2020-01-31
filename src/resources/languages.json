@@ -1,0 +1,122 @@
+{
+  "en": {
+    "header_title": "– Advertorial –",
+    "flag": "enFlag",
+    "title": "Benefit from bitcoin even when the crypto markets are crashing.",
+    "subtitle": [
+      "Join today",
+      " and see",
+      "how much you can make"
+    ],
+    "customers_name": [
+      "Amelia",
+      "Elsie",
+      "Fred",
+      "Henry",
+      "Ivy",
+      "Evelin"
+    ],
+    "title_form": [
+      "SIGN UP BELOW",
+      "and we’ll guide you through the process."
+    ],
+    "first_name": "First name",
+    "last_name": "Last name",
+    "email": "Email",
+    "password": "Password",
+    "phone_number": "Phone",
+    
+    "button": "Get Access Now",
+    "agreement_first": "I agree to the processing of my email address for the purposes of receiving commercial offers that we believe will be of interest to you on behalf of the companies and industries explicitly detailed in our Privacy Policy",
+    "agreement_second": [
+      "By filling out and sending us the registration form you agree with the Terms & Conditions and the Privacy Policy",
+      "Terms & Conditions",
+      "Privacy Policy"
+    ],
+    "button_last": "REGISTER NOW",
+    "passtest": [
+      "The password must be 8 characters long.",
+      "Must not contain special characters.",
+      "Must contain at least 1 letter.",
+      "Must contain at least 1 capital letter.",
+      "Must contain at least 1 number."
+    ],
+    "more_title": [
+      "Your data is always protected with us.\nYou can change your mind anytime by...\n"
+    ],
+    "more_decription": "You can change your mind at any time by clicking on the unsubscribe link in the footer of any email you receive from us. We will treat your information with respect. By clicking above, you agree that we may process your information in accordance with these terms.",
+
+    "video_placeholder": "Tap to watch and learn the secret!",
+
+    "famous_title": "Famous names in trading",
+    "famous_description": "There are a lot of big names in trading. Here is what some of the most famous traders have to say.",
+    "famous_body": [
+      {
+        "img": "elder",
+        "name": "Alexander Elder",
+        "text": "You can be free. You can live and work anywhere in the world. You can be independent from routine and not answer to anybody."
+      },
+      {
+        "img": "seykota",
+        "name": "Ed Seykota",
+        "text": "Win or lose, everybody gets what they want out of the market. Some people seem to like to lose, so they win by losing money."
+      },
+      {
+        "img": "oneil",
+        "name": "William O’Neil",
+        "text": "What seems too high and risky to the majority generally goes higher and what seems low and cheap generally goes lower."
+      },
+      {
+        "img": "buffet",
+        "name": "Warren Buffett",
+        "text": ""
+      }
+    ],
+    
+    "faq_title": "FAQ",
+    "faq_subtitle": "Here are the most common questions with our answers.",
+    "faq_questions": [
+      {
+        "q": "Is Bitcoin safe?",
+        "a": "If you look at bitcoin’s history it has lots of ups and downs. However, look more closely and you’ll notice that after every time it goes down it increases to a new high. This is because Bitcoin is constantly growing."
+      },
+      {
+        "q": "What’s in it for us?",
+        "a": "At Bitcoin Profit, we are all investors in Bitcoin. Therefore, we know that the more people that join us, the bigger Bitcoin will grow."
+      },
+      {
+        "q": "What’s the secret?",
+        "a": "The secret is that there is no secret. Join today and we’ll show you just how easy it is to get started trading Bitcoin."
+      },
+      {
+        "q": "Is it risky?",
+        "a": "The risk levels depend on how you trade. Join us today and we’ll show you how to maximise your profits and minimise your risk."
+      },
+      {
+        "q": "Why Join Bitcoin Profit?",
+        "a": "Bitcoin Profit enables you to easily trade your Bitcoin for real cash. We also have a state of the art platform which makes trading easier than ever before. Don’t believe us? Join today and see for yourself. Getting involved in the Bitcoin revolution has never been easier."
+      },
+      {
+        "q": "What’s the catch?",
+        "a": "No catch! You simply sign up, deposit an initial trading amount of $250 and we’ll do the rest. Our platform enables the easiest way to get started trading Bitcoin. No hassle, no fuss so that you can start earning instantly."
+      }
+    ],
+
+    "second_form": "Begin your new life Now",
+    "disclaimer": [
+      "IMPORTANT: ",
+      "Earnings and Legal Disclaimers",
+      "Earnings and income representations made by , (collectively “This Website” only used as aspirational examples of your earnings potential. The success of those in the testimonials and other examples are exceptional results and therefore are not intended as a guarantee that you or others will achieve the same results. Individual results will vary and are entirely dependent on your use of .",
+      "This Website is not responsible for your actions. You bear sole responsibility for your actions and decisions when using products and services and therefore you should always exercise caution and due diligence. You agree that this Website is not liable to you in any way for the results of using our products and services. See our Terms & Conditions for our full disclaimer of liability and other restrictions.",
+      "This Website may receive compensation for products and services they recommend to you. If you do not want This Website to be compensated for a recommendation, then we advise that you search online for a similar product through a non-affiliate link.",
+      "*Testimonials:",
+      "All characters, information and events depicted on This Website are entirely fictitious. Any similarity to actual events or persons, living or dead, is purely coincidental."
+    ],
+    "bottom_info": [
+      "We use cookies to understand how you use our site and to improve your experience. This includes personalizing content and advertising. By continuing to use our site, you accept our use of cookies, revised Privacy Policy and Terms of Use. This website is an Advertorial. ",
+      "More information",
+      "OK",
+      "Report Ad / Spam"
+    ]
+  }
+}

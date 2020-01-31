@@ -1,0 +1,83 @@
+@import './Header/Header';
+@import './Regform/Regform';
+
+.TopSection {
+    padding-bottom: 45px;
+    border-bottom: 1px solid #cecece;
+    .hidden-block {
+        display: flex;
+        justify-content: flex-end;
+
+        img {
+            height: 40px;
+            border: 1px solid #ffffff;
+        }
+
+        @media (max-width: 764px) {
+            display: none;
+        }
+    }
+
+    .top-reg {
+        margin-top: 40px;
+        padding-bottom: 30px;
+        .VideoPlayer {
+            border: 3px solid #fff;
+            height: 100%;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            background: black;
+            width: 100%;
+            max-width: 650px;
+            @media (max-width: 990px) {
+                max-width: 100%;
+            }
+            .videoOverlayInner {
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                text-align: center;
+                z-index: 10;
+                background: rgba(0, 0, 0, 0.6);
+                transition: 250ms opacity ease;
+                cursor: pointer;
+                visibility: visible;
+
+                p {
+                    font-size: 18px;
+                    line-height: 1.2;
+                    font-weight: bold;
+                    color: white;
+                    margin-bottom: 15px;
+                }
+
+                img {
+                    width: 90px;
+                    margin: 0 auto;
+                }
+            }
+
+            .videoOverlayInner.false {
+                visibility: hidden;
+                z-index: 0;
+            }
+
+        }
+    }
+
+    .brand-icons {
+        .container {
+            width: fit-content;
+            img {
+                max-width: 320px;
+                filter: grayscale(100%);
+            }
+        }
+    }
+
+}
