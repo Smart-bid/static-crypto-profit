@@ -80,4 +80,99 @@
         }
     }
 
+    //Modal Window
+    .modal-window {
+        &:before {
+            content: '';
+            position: fixed;
+            height: 100%;
+            right: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
+        .wrapper {
+            max-width: 600px;
+            position: fixed;
+            top: calc(800px - 60%);
+            right: 0;
+            left: 0;
+            margin: 0 auto;
+            background-image: url("../MidSection/images/bitcoin_bg.jpg");
+            background-size: 150%;
+            background-position: center top;
+            background-repeat: no-repeat;
+            background-color: #00010d;
+            padding: 60px 40px;
+            border-radius: 5px;
+            z-index: 9999;
+            .close-btn {
+                position: absolute;
+                top: 25px;
+                right: 25px;
+                width: 25px;
+                height: 25px;
+                background-color: $blue;
+                border-radius: 50%;
+                cursor: pointer;
+                &:hover {
+                    background-color: #3bdcab;
+                }
+                span {
+                    position: absolute;
+                    top: 11px;
+                    right: 4px;
+                    &:before,
+                    &:after {
+                        content: '';
+                        display: block;
+                        width: 16px;
+                        height: 2px;
+                        background-color: #fff;
+                        transform-origin: 42%;
+                    }
+                    &:before {
+                        transform: rotate(45deg);
+                    }
+                    &:after {
+                        transform: rotate(-45deg);
+                    }
+                }
+            }
+            .text-zone {
+                h4 {
+                    font-size: 64px;
+                    font-weight: 900;
+                    color: $blue;
+                    margin-bottom: 25px;
+                    text-align: center;
+                    small {
+                        display: block;
+                        font-size: 50%;
+                        font-weight: 500;
+                        color: #fff;
+                    }
+                }
+                p {
+                    font-size: 21px;
+                    font-weight: 400;
+                    color: #fff;
+                    text-align: center;
+                    margin-bottom: 30px;
+                    &:last-child {
+                        margin-bottom: 15px;
+                    }
+                    &.subtitle {
+
+                    }
+                }
+            }
+            .regform {
+                .card {
+                    border-top: none;
+                    border-radius: 5px;
+                }
+            }
+        }
+    }
 }

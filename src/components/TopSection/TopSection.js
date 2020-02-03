@@ -10,6 +10,22 @@ import logo from './Header/logo.svg'
 import brandIcons from './brand-icons.png'
 
 export default class TopSection extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            showModal: null,
+        }
+    }
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState({showModal: true})
+        }, 4000)
+    }
+
+    closeModalWindow = () => {
+        this.setState({showModal: false})
+    }
 
     render() {
         let languageManager = this.props.languageManager(),
@@ -93,6 +109,47 @@ export default class TopSection extends Component {
             ];
         return (
             <section className='TopSection'>
+
+                {/*Modal Window*/}
+                <div className={this.state.showModal ? "modal-window" : "modal-window hidden"}>
+                    <div className="wrapper">
+                        <div className="close-btn" onClick={this.closeModalWindow}>
+                            <span></span>
+                        </div>
+                        <div className="text-zone">
+                            <h4>
+                                Wait! <br/>
+                                <small>
+                                    Before you leave...
+                                </small>
+                            </h4>
+                            <p>
+                                The markets are moving fast. Don’t miss out on your chance to profit from the latest rises and falls.
+                            </p>
+                            <p>
+                                Register today and join the thousands of people changing their lives thanks to online trading.
+                            </p>
+                        </div>
+                        <div className="regform">
+                            <Regform {...this.props}
+                                     loadingLogo={{
+                                         className: 'loading',
+                                         source: logo
+                                     }}
+                                     material={true}
+                                     formSteps={steps}
+                                     responseError={{
+                                         className: 'resError',
+                                         button: {
+                                             className: 'button_forward',
+                                             text: 'OK'
+                                         }
+                                     }}
+                            />
+                        </div>
+                    </div>
+                </div>
+
                 <Header languageManager={this.props.languageManager}/>
 
                 <div className="top-reg" id="top">

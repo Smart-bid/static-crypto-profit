@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import logo from '../TopSection/Header/logo.svg'
+import React, {Component} from 'react'
+import logo from './logo.svg'
 
 export default class BottomSection extends Component {
     render() {
@@ -7,33 +7,41 @@ export default class BottomSection extends Component {
 
         return (
             <section className='BottomSection'>
-                <div className="footer">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-lg-3 col-md-3 footer-logo-block">
-                                <img src={logo} alt="logo" className="footer-logo"/>
-                            </div>
-                            <div className="col-lg-9 col-md-9 footer-link-block">
-                                <div className="links">
-                                    <a onClick={() => this.props.pageHandler('privacy')}>Privacy Policy</a>
-                                    <a onClick={() => this.props.pageHandler('terms')}>Terms</a>
-                                    <a onClick={() => this.props.pageHandler('spam')}>Report Ad / Spam</a>
-                                    <span className="copyright">© {new Date().getFullYear()}</span>
-                                </div>
-                            </div>
-                            <div className="col-12">
-                                <div className="disclaimer">
-                                    <p><span>{languageManager.disclaimer[0]}</span>{languageManager.disclaimer[1]}</p>
-                                    <p>{languageManager.disclaimer[2]}</p>
-                                    <p>{languageManager.disclaimer[3]}</p>
-                                    <p>{languageManager.disclaimer[4]}</p>
-                                    <p>{languageManager.disclaimer[5]}</p>
-                                    <p>{languageManager.disclaimer[6]}</p>
-                                </div>
-                            </div>
+
+                <div className="container">
+                    <div className="logo">
+                        <img src={logo} alt="logo" draggable={false}/>
+                    </div>
+
+                    <div className="links">
+                        <div className="copyrights">
+                                <span>
+                                    {languageManager.copyright[0]}&nbsp;{new Date().getFullYear()}&nbsp;
+                                    {languageManager.copyright[1]}
+                                </span>
                         </div>
+                        <ul>
+                            <li>
+                                <a onClick={() => this.props.pageHandler('privacy')}>Privacy Policy</a>
+                            </li>
+                            <li>
+                                <a onClick={() => this.props.pageHandler('terms')}>Terms</a>
+                            </li>
+                            <li>
+                                <a onClick={() => this.props.pageHandler('spam')}>Report Ad / Spam</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div className="disclaimer">
+                        <p><strong>{languageManager.disclaimer[0]}</strong>{languageManager.disclaimer[1]}</p>
+                        <p>{languageManager.disclaimer[2]}</p>
+                        <p>{languageManager.disclaimer[3]}</p>
+                        <p>{languageManager.disclaimer[4]}</p>
+                        <p>{languageManager.disclaimer[5]}</p>
+                        <p>{languageManager.disclaimer[6]}</p>
                     </div>
                 </div>
+
             </section>
         )
     }

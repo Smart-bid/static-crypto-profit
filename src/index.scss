@@ -10,7 +10,7 @@ $rounded: 'M PLUS Rounded 1c', sans-serif;
 
 @import './components/TopSection/TopSection.scss';
 @import './components/MidSection/MidSection.scss';
-//@import './components/BottomSection/BottomSection.scss';
+@import './components/BottomSection/BottomSection.scss';
 @import './pages/Page.scss';
 
 body {
@@ -43,6 +43,10 @@ button {
     font-family: $rounded;
     outline: none;
 }
+.hidden {
+    display: none;
+    visibility: hidden;
+}
 
 .container {
     max-width: 1200px;
@@ -54,6 +58,35 @@ button {
     }
     .row {
         margin: 0 !important;
+    }
+    .section-heading {
+        font-size: 52px;
+        font-weight: 900;
+        color: $purple;
+        margin-bottom: 20px;
+        text-align: center;
+        @media(max-width: 768px) {
+            font-size: 32px;
+        }
+        @media(max-width: 479px) {
+            font-size: 32px * 0.75;
+        }
+        &.size-l {
+            font-size: 29px;
+        }
+        &.white {
+            color: #fff;
+        }
+    }
+    .section-subtitle {
+        width: 45%;
+        margin: 0 auto;
+        font-family: $rounded;
+        font-size: 28px;
+        font-weight: 500;
+        line-height: 1.25;
+        color: $grey;
+        text-align: center;
     }
 }
 .App {
@@ -91,7 +124,7 @@ button {
             }
             .btn-ok {
                 display: block;
-                background: #dfc65b;
+                background: $blue;
                 color: #fff;
                 border: none;
                 border-radius: 2px;
@@ -104,7 +137,7 @@ button {
                 margin-bottom: 10px;
                 outline: none;
                 &:hover {
-                    background: #dbbf46;
+                    background: #29C2B8;
                 }
             }
             @media (max-width: 500px) {

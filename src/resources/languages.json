@@ -47,31 +47,6 @@
     "more_decription": "You can change your mind at any time by clicking on the unsubscribe link in the footer of any email you receive from us. We will treat your information with respect. By clicking above, you agree that we may process your information in accordance with these terms.",
 
     "video_placeholder": "Tap to watch and learn the secret!",
-
-    "famous_title": "Famous names in trading",
-    "famous_description": "There are a lot of big names in trading. Here is what some of the most famous traders have to say.",
-    "famous_body": [
-      {
-        "img": "elder",
-        "name": "Alexander Elder",
-        "text": "You can be free. You can live and work anywhere in the world. You can be independent from routine and not answer to anybody."
-      },
-      {
-        "img": "seykota",
-        "name": "Ed Seykota",
-        "text": "Win or lose, everybody gets what they want out of the market. Some people seem to like to lose, so they win by losing money."
-      },
-      {
-        "img": "oneil",
-        "name": "William O’Neil",
-        "text": "What seems too high and risky to the majority generally goes higher and what seems low and cheap generally goes lower."
-      },
-      {
-        "img": "buffet",
-        "name": "Warren Buffett",
-        "text": ""
-      }
-    ],
     
     "faq_title": "FAQ",
     "faq_subtitle": "Here are the most common questions with our answers.",
@@ -102,15 +77,43 @@
       }
     ],
 
-    "second_form": "Begin your new life Now",
+    "famous_title": "Famous names in trading",
+    "famous_subtitle": "Here are the most common questions with our answers.",
+    "famous_names": [
+      {
+        "img": "elder",
+        "name": "Alexander Elder",
+        "text": "You can be free. You can live and work anywhere in the world. You can be independent from routine and not answer to anybody"
+      },
+      {
+        "img": "seykota",
+        "name": "Ed Seykota",
+        "text": "Win or lose, everybody gets what they want out of the market. Some people seem to like to lose, so they win by losing money."
+      },
+      {
+        "img": "oneil",
+        "name": "William O’Neil",
+        "text": "What seems too high and risky to the majority generally goes higher and what seems low and cheap generally goes lower."
+      },
+      {
+        "img": "bufft",
+        "name": "Warren Buffett",
+        "text": "You don't need to be a rocket scientist. Investing is not a game where the guy with the 160 IQ beats the guy with 130 IQ."
+      }
+    ],
+
+    "second_form_title": "Sign Up Below",
+    "second_form_subtitle": "and we’ll guide you through the process.",
+    "copyright": [
+      "Copyright",
+      "Crypto Profit"
+    ],
     "disclaimer": [
       "IMPORTANT: ",
       "Earnings and Legal Disclaimers",
       "Earnings and income representations made by , (collectively “This Website” only used as aspirational examples of your earnings potential. The success of those in the testimonials and other examples are exceptional results and therefore are not intended as a guarantee that you or others will achieve the same results. Individual results will vary and are entirely dependent on your use of .",
       "This Website is not responsible for your actions. You bear sole responsibility for your actions and decisions when using products and services and therefore you should always exercise caution and due diligence. You agree that this Website is not liable to you in any way for the results of using our products and services. See our Terms & Conditions for our full disclaimer of liability and other restrictions.",
-      "This Website may receive compensation for products and services they recommend to you. If you do not want This Website to be compensated for a recommendation, then we advise that you search online for a similar product through a non-affiliate link.",
-      "*Testimonials:",
-      "All characters, information and events depicted on This Website are entirely fictitious. Any similarity to actual events or persons, living or dead, is purely coincidental."
+      "This Website may receive compensation for products and services they recommend to you. If you do not want This Website to be compensated for a recommendation, then we advise that you search online for a similar product through a non-affiliate link."
     ],
     "bottom_info": [
       "We use cookies to understand how you use our site and to improve your experience. This includes personalizing content and advertising. By continuing to use our site, you accept our use of cookies, revised Privacy Policy and Terms of Use. This website is an Advertorial. ",

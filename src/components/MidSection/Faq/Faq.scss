@@ -1,43 +1,49 @@
 .Faq {
     padding: 45px 0;
-    .section-heading {
-        font-size: 52px;
-        font-weight: 900;
-        color: $purple;
-        text-align: center;
-        @media(max-width: 768px) {
-            font-size: 32px;
-        }
-        @media(max-width: 479px) {
-            font-size: 32px * 0.75;
-        }
-    }
-    .section-subtitle {
-        width: 45%;
-        margin: 0 auto;
-        font-family: $rounded;
-        font-size: 28px;
-        font-weight: 500;
-        line-height: 1.25;
-        color: $grey;
-        text-align: center;
-    }
     .faq-list {
         display: flex;
         flex-wrap: wrap;
+        padding-top: 15px;
         .faq-item {
-            width: 30%;
-            margin-left: 1.5%;
-            margin-right: 1.5%;
+            width: 33.33%;
+            padding: 35px 15px;
+            border-bottom: 1px solid #ececec;
             .wrap {
                 .badge {
+                    width: 62px;
+                    height: min-content;
+                    font-family: $rounded;
+                    font-size: 25px;
+                    font-weight: 700;
                     margin-right: 30px;
+                    padding: 8px 15px;
                 }
                 .heading {
                     display: flex;
+                    align-items: center;
+                    margin-bottom: 10px;
+                    .badge {
+                        background-color: #f7a336;
+                        span {
+                            color: #fff;
+                        }
+                    }
+                    h3 {
+                        font-family: $family;
+                        font-size: 20px;
+                        font-weight: 400;
+                        margin: 0;
+                    }
                 }
                 .descr {
                     display: flex;
+                    .badge {
+                        background-color: #ededed;
+                    }
+                    p {
+                        font-size: 15px;
+                        line-height: 1.3;
+                    }
                 }
             }
         }

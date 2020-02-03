@@ -20,7 +20,7 @@ export default class Faq extends Component {
                                         <div className="wrap">
                                             <div className="heading">
                                                 <div className="badge">
-                                                    <span>Q {i+1}</span>
+                                                    <span>Q{i+1}</span>
                                                 </div>
                                                 <h3>
                                                     {item.q}
@@ -28,7 +28,7 @@ export default class Faq extends Component {
                                             </div>
                                             <div className="descr">
                                                 <div className="badge">
-                                                    <span>A {i+1}</span>
+                                                    <span>A{i+1}</span>
                                                 </div>
                                                 <p>
                                                     {item.a}

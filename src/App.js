@@ -18,6 +18,8 @@ export default class App extends Component {
             page: 'main',
             hide: false
         };
+
+        this.pageHandler = this.pageHandler.bind(this);
     }
 
     componentDidMount() {
@@ -72,7 +74,8 @@ export default class App extends Component {
 
                         <MidSection {...this.props}/>
 
-                        {/*<BottomSection {...this.props} />*/}
+                        <BottomSection {...this.props}
+                                       pageHandler={this.pageHandler}/>
 
                         <div className="privacy-policy" style={(document.cookie.indexOf('privacy') !== -1) ? display : {}}>
                             <div className="privacy-inner">
