@@ -1,10 +1,8 @@
 .form {
     padding-left: 0;
-    @media (max-width: 1200px) {
-        padding-left: 15px;
-        padding-right: 0;
-    }
-    @media (max-width: 990px) {
+    @media (max-width: 960px) {
+        flex-basis: 100%;
+        max-width: 100%;
         padding: 0;
     }
 }
@@ -21,6 +19,9 @@
         color: #ffffff;
         border-radius: 3px 3px 0 0;
         text-align: center;
+        @media (max-width: 960px) {
+            display: none;
+        }
         h3 {
             font-size: 28px;
             font-weight: 900;
@@ -47,6 +48,9 @@
         padding: 20px 25px 10px 25px;
         border-top: 5px solid $blue;
         box-shadow: 0 10px 15px 0 rgba(0,0,0,.15);
+        @media (max-width: 960px) {
+            border-radius: 0 !important;
+        }
         .MuiFormControlLabel-root {
             margin: 0 !important;
         }

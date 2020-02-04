@@ -8,6 +8,12 @@
             width: 33.33%;
             padding: 35px 15px;
             border-bottom: 1px solid #ececec;
+            @media(max-width: 960px) {
+                width: 50%;
+            }
+            @media(max-width: 620px) {
+                width: 100%;
+            }
             .wrap {
                 .badge {
                     width: 62px;
@@ -17,6 +23,11 @@
                     font-weight: 700;
                     margin-right: 30px;
                     padding: 8px 15px;
+                    @media(max-width: 479px) {
+                        width: 40px;
+                        font-size: 16px;
+                        padding: 8px;
+                    }
                 }
                 .heading {
                     display: flex;

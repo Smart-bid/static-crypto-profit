@@ -73,6 +73,12 @@ button {
         }
         &.size-l {
             font-size: 29px;
+            @media(max-width: 960px) {
+                font-size: 29px * 0.75;
+            }
+            @media(max-width: 479px) {
+                font-size: 29px * 0.75;
+            }
         }
         &.white {
             color: #fff;
@@ -87,6 +93,14 @@ button {
         line-height: 1.25;
         color: $grey;
         text-align: center;
+        @media(max-width: 960px) {
+            width: 100%;
+            font-size: 28px * 0.75;
+        }
+        @media(max-width: 479px) {
+            font-size: 28px * 0.55;
+        }
+
     }
 }
 .App {

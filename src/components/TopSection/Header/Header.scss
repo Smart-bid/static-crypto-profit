@@ -5,6 +5,9 @@
     padding-bottom: 30px;
     border-radius: 0 100% 81% 19%/87% 0 100% 13%;
     overflow: hidden;
+    @media (max-width: 768px) {
+        border-radius: 0% 100% 40% 40%/0% 0% 10% 10%;
+    }
     .container {
         .advertioral {
             margin-bottom: 15px;
@@ -27,6 +30,9 @@
                 font-size: 52px;
                 color: #fff;
                 font-weight: 900;
+                @media (max-width: 1280px) {
+                    font-size: 40px;
+                }
             }
             h2 {
                 font-size: 28px;
