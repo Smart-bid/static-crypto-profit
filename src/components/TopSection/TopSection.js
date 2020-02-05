@@ -3,6 +3,7 @@ import React, {Component} from 'react'
 //Components
 import Header from "./Header/Header"
 import VideoPlayer from './VideoPlayer/VideoPlayer.js'
+// import Regform from './Regform/Regform'
 import Regform from './Regform/Regform'
 
 //Images
@@ -12,19 +13,23 @@ import brandIcons from './brand-icons.png'
 export default class TopSection extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             showModal: null,
         }
     }
+
+    body = document.getElementsByTagName("body")[0];
+
     componentDidMount() {
         setTimeout(() => {
             this.setState({showModal: true})
-        }, 4000)
+            this.body.classList.add("fixed");
+        }, 5000)
     }
 
     closeModalWindow = () => {
         this.setState({showModal: false})
+        this.body.classList.remove("fixed");
     }
 
     render() {
@@ -131,21 +136,22 @@ export default class TopSection extends Component {
                             </p>
                         </div>
                         <div className="regform">
-                            <Regform {...this.props}
-                                     loadingLogo={{
-                                         className: 'loading',
-                                         source: logo
-                                     }}
-                                     material={true}
-                                     formSteps={steps}
-                                     responseError={{
-                                         className: 'resError',
-                                         button: {
-                                             className: 'button_forward',
-                                             text: 'OK'
-                                         }
-                                     }}
-                            />
+                            <Regform {...this.props}/>
+                            {/*<Regform {...this.props}*/}
+                            {/*         loadingLogo={{*/}
+                            {/*             className: 'loading',*/}
+                            {/*             source: logo*/}
+                            {/*         }}*/}
+                            {/*         material={true}*/}
+                            {/*         formSteps={steps}*/}
+                            {/*         responseError={{*/}
+                            {/*             className: 'resError',*/}
+                            {/*             button: {*/}
+                            {/*                 className: 'button_forward',*/}
+                            {/*                 text: 'OK'*/}
+                            {/*             }*/}
+                            {/*         }}*/}
+                            {/*/>*/}
                         </div>
                     </div>
                 </div>
@@ -166,21 +172,22 @@ export default class TopSection extends Component {
                                         </h3>
                                         <span>{languageManager.title_form[1]}</span>
                                     </div>
-                                    <Regform {...this.props}
-                                             loadingLogo={{
-                                                 className: 'loading',
-                                                 source: logo
-                                             }}
-                                             material={true}
-                                             formSteps={steps}
-                                             responseError={{
-                                                 className: 'resError',
-                                                 button: {
-                                                     className: 'button_forward',
-                                                     text: 'OK'
-                                                 }
-                                             }}
-                                    />
+                                    <Regform {...this.props}/>
+                                    {/*<Regform {...this.props}*/}
+                                    {/*         loadingLogo={{*/}
+                                    {/*             className: 'loading',*/}
+                                    {/*             source: logo*/}
+                                    {/*         }}*/}
+                                    {/*         material={true}*/}
+                                    {/*         formSteps={steps}*/}
+                                    {/*         responseError={{*/}
+                                    {/*             className: 'resError',*/}
+                                    {/*             button: {*/}
+                                    {/*                 className: 'button_forward',*/}
+                                    {/*                 text: 'OK'*/}
+                                    {/*             }*/}
+                                    {/*         }}*/}
+                                    {/*/>*/}
                                 </div>
                             </div>
                         </div>

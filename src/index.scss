@@ -18,6 +18,9 @@ body {
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    &.fixed {
+        overflow: hidden;
+    }
 }
 
 a {
@@ -100,7 +103,6 @@ button {
         @media(max-width: 479px) {
             font-size: 28px * 0.55;
         }
-
     }
 }
 .App {

@@ -1,12 +1,3 @@
-.form {
-    padding-left: 0;
-    @media (max-width: 960px) {
-        flex-basis: 100%;
-        max-width: 100%;
-        padding: 0;
-    }
-}
-
 .regform {
     position: relative;
     @media (max-width: 990px) {
@@ -44,192 +35,345 @@
             color: $grey;
         }
     }
-    .card {
-        padding: 20px 25px 10px 25px;
-        border-top: 5px solid $blue;
-        box-shadow: 0 10px 15px 0 rgba(0,0,0,.15);
-        @media (max-width: 960px) {
-            border-radius: 0 !important;
-        }
-        .MuiFormControlLabel-root {
-            margin: 0 !important;
-        }
-        .card-body {
-            position: relative;
-            font-size: 14px;
-            background: #fff;
-            width: 100%;
-            padding: 0;
-            .btn-secondary {
-                width: 100%;
-                font-size: 1.5em;
-                font-weight: 900;
-                color: #ffffff;
-                background: $orange;
-                padding: 0.70em 1.25em;
-                border-radius: .15rem;
-                cursor: pointer;
-                box-shadow: 0 2px 0 #d87e09;
-                border: none !important;
-                opacity: 1;
-                transition: all .1s linear;
-                &:hover {
-                    opacity: .9;
+    //Regform
+    .Regform {
+        .inner {
+            padding: 20px;
+            background-color: #fff;
+            border-top: 5px solid #27dda6;
+            border-radius: 0 0 5px 5px;
+            box-shadow: 0 10px 15px 0 rgba(0,0,0,.15);
+            .form-wrapper {
+                position: relative;
+                .form-group {
+                    margin-bottom: 13px;
+                    &.flex {
+                        display: flex;
+                        justify-content: space-between;
+                        .form-input {
+                            width: 48.5%;
+                        }
+                    }
+                    .form-input {
+                        position: relative;
+                        &.password {
+                            position: initial;
+                        }
+                        label {
+                            &.like-placeholder {
+                                opacity: 0;
+                                position: absolute;
+                                font-size: 11px;
+                                top: 0;
+                                padding: 0 7px;
+                                background-color: #fff;
+                                pointer-events: none;
+                                transition: .1s linear;
+                                transform: translateX(10px) translateY(6.5px);
+                            }
+                        }
+                        input {
+                            font-size: 12px;
+                            padding: 5px 10px;
+                            color: #999;
+                            border: 1px solid #ccc;
+                            border-radius: 3px;
+                            box-shadow: none !important;
+                            transition: .1s linear;
+                            &:hover {
+                                border: 1px solid #52bce6;
+                                background-color: rgba(82,188,230,.05);
+                            }
+                            &:focus {
+                                border: 1px solid #52bce6;
+                                ~ label {
+                                    opacity: 1;
+                                    transform: translateX(4px) translateY(-8px);
+                                }
+                            }
+                            &[type="password"] {
+                                &:focus {
+                                    ~ label {
+                                        transform: translateX(4px) translateY(-40px);
+                                    }
+                                    ~ .req {
+                                        opacity: 1 !important;
+                                    }
+                                }
+                                ~ label {
+                                    top: auto;
+                                    transform: translateX(4px) translateY(-24px);
+                                }
+                                ~ .req {
+                                    opacity: 0;
+                                    position: absolute;
+                                    right: 0;
+                                    left: 0;
+                                    padding: 10px;
+                                    margin-top: 10px;
+                                    background-color: #fff;
+                                    border: 1px solid #f0482a;
+                                    pointer-events: none;
+                                    z-index: 1;
+                                    li {
+                                        font-size: 12px;
+                                        line-height: 1.25;
+                                        list-style: none;
+                                        &:before {
+                                            content: '';
+                                            display: inline-block;
+                                            vertical-align: 0;
+                                        }
+                                        &.default {
+                                            color: #f0482a;
+                                            &:before {
+                                                content: "x";
+                                                font-size: 15px;
+                                                font-weight: 500;
+                                                line-height: 1;
+                                                margin-right: 5px;
+                                                margin-left: -2px;
+                                            }
+                                        }
+                                        &.correct {
+                                            color: limegreen;
+                                            &:before {
+                                                width: 5px;
+                                                height: 11px;
+                                                margin-right: 7px;
+                                                border-color: limegreen;
+                                                border-right-width: 2px;
+                                                border-right-style: solid;
+                                                border-bottom-width: 2px;
+                                                border-bottom-style: solid;
+                                                transform: rotate(45deg);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        //IntTelInput
+                        &.focused {
+                            .intl-tel-input {
+                                ~label {
+                                    opacity: 1;
+                                    left: 10px;
+                                    transform: translateX(4px) translateY(-8px);
+                                }
+                                input[type="tel"] {
+                                    &::placeholder {
+                                        opacity: 1;
+                                    }
+                                }
+                            }
+                        }
+                        .intl-tel-input {
+                            width: 100%;
+                            ~ label {
+                                opacity: 1 !important;
+                                //width: calc(100% - 55px);
+                                left: 40px;
+                            }
+                            input[type="tel"] {
+                                padding-left: 52px !important;
+                                &::placeholder {
+                                    opacity: 0;
+                                }
+                            }
+                        }
+
+                        //Agreement
+                        &.agreement {
+                            padding-left: 22px;
+                            label {
+                                font-size: 11px;
+                                line-height: 1.25;
+                                color: #666;
+                            }
+                            input[type="checkbox"] {
+                                display: none;
+                                + label {
+                                    &:before {
+                                        content: "";
+                                        position: absolute;
+                                        left: 0;
+                                        border: 1px solid #ccc;
+                                        border-radius: 4px;
+                                        display: inline-block;
+                                        width: 15px;
+                                        height: 15px;
+                                        padding-left: 0.2em;
+                                        padding-bottom: 0.3em;
+                                        margin-right: 0.2em;
+                                        vertical-align: bottom;
+                                        color: transparent;
+                                        cursor: pointer;
+                                        transition: .4s all;
+                                    }
+                                }
+                                &:checked {
+                                    + label {
+                                        &:before {
+                                            border: none;
+                                        }
+                                        &:after {
+                                            content: '';
+                                            position: absolute;
+                                            top: 2px;
+                                            left: 6px;
+                                            width: 5px;
+                                            height: 11px;
+                                            border-color: limegreen;
+                                            border-right-width: 2px;
+                                            border-right-style: solid;
+                                            border-bottom-width: 2px;
+                                            border-bottom-style: solid;
+                                            transform: rotate(45deg);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        //Input Errors
+                        .error {
+                            width: 100%;
+                            position: absolute;
+                            bottom: -5px;
+                            font-size: 10px;
+                            color: #fff;
+                            background-color: #f0482a;
+                            padding: 0 10px;
+                            border-radius: 0 0 3px 3px;
+                            span {
+                                font-size: 10px;
+                                line-height: 1;
+                            }
+                        }
+                    }
+                    //Submit Btn
+                    .registerBtn {
+                        width: 100%;
+                        min-height: 60px;
+                        font-family: $rounded;
+                        font-size: 21px;
+                        font-weight: 900;
+                        color: #fff;
+                        padding: 12px 15px;
+                        background-color: $orange;
+                        background-image: linear-gradient(153deg,#f7a336 0%,#f08c0a 100%);
+                        border: none;
+                        outline: none;
+                        box-shadow: 0 2px 0 #d87e09;
+                        &:hover {
+                            opacity: .85;
+                        }
+                        &:active {
+                            transform: translateY(2px);
+                        }
+                    }
                 }
-            }
-            .support_text {
-                max-width: 170px;
-                font-size: .65em;
-                line-height: 1.25;
-                color: #333;
-                margin-top: 8px;
-                margin-left: auto;
-                margin-right: auto;
-                text-align: center;
-                >.lock-icon {
-                    &:before {
-                        content: '';
-                        display: inline-block;
-                        vertical-align: middle;
-                        width: 14px;
-                        height: 14px;
-                        background-image: url("./lock.svg");
-                        background-size: contain;
-                        background-repeat: no-repeat;
+
+                //Notification
+                .notification {
+                    max-width: 180px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    .info {
+                        > p {
+                            font-size: 9px;
+                            line-height: 1.25;
+                            color: $grey;
+                            margin: 0;
+                            text-align: center;
+                            &:before {
+                                content: '';
+                                width: 12px;
+                                height: 12px;
+                                display: inline-block;
+                                vertical-align: -2px;
+                                background-image: url("./lock.svg");
+                                background-size: contain;
+                            }
+                        }
+                        .dropdown-btn {
+                            width: fit-content;
+                            margin: 0 auto;
+                            cursor: pointer;
+                            > span {
+                                display: block;
+                                font-size: 9px;
+                                line-height: 1.25;
+                                color: $grey;
+                                border-bottom: 1px dotted;
+                            }
+                            &:hover {
+                                .dropdown {
+                                    opacity: 1;
+                                    pointer-events: auto;
+                                }
+                            }
+                            .dropdown {
+                                opacity: 0;
+                                max-width: 180px;
+                                position: absolute;
+                                left: 0;
+                                right: 0;
+                                bottom: 15px;
+                                background-color: #666;
+                                padding: 10px;
+                                margin: 0 auto;
+                                border-radius: 5px;
+                                pointer-events: none;
+                                transition: .2s all;
+                                &:after {
+                                    content: '';
+                                    position: absolute;
+                                    right: calc(50% - 8px);
+                                    bottom: -15px;
+                                    border: 8px solid transparent;
+                                    border-top: 8px solid #666;
+                                }
+                                p {
+                                    font-size: 9px;
+                                    line-height: 1.25;
+                                    color: #fff;
+                                    margin: 0;
+                                    text-align: center;
+                                }
+                            }
+                        }
                     }
                 }
             }
         }
-    }
-}
-
-.cardb {
-    .MuiInputBase-input {
-        position: relative;
-        margin: 0;
-        width: 100%;
-        padding: .5em .75em;
-        height: 100%;
-        background-color: #fff;
-        color: #333;
-        border: none;
-        border-radius: .15rem;
-        font-size: 1em;
-        line-height: 1;
-        transition: 100ms border-color linear,100ms background-color linear;
-        box-sizing: border-box;
-    }
-    .MuiOutlinedInput-root {
-        border-radius: 0;
-        outline: 0;
-        &.Mui-focused {
-            .MuiOutlinedInput-notchedOutline {
-                border-color: rgba(82, 188, 230, 0.5) !important;
+        //Response Error
+        .loading-logo {
+            max-height: 65px;
+        }
+        .response-error {
+            background-color: #fff;
+            padding: 30px 20px 20px;
+            border-radius: 5px;
+            p {
+                text-align: center;
+            }
+            .btn-ok {
+                display: block;
+                font-size: 18px;
+                font-weight: 700;
+                padding: 5px 20px;
+                color: #fff;
+                background-color: $orange;
+                border: none;
+                border-radius: 8px;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 15px;
+                outline: none;
             }
         }
     }
-    .MuiFormControl-root, .MuiInputBase-root {
-        height: 35px;
-        margin-bottom: 1em;
-    }
-    .MuiInputBase-root {
-        font-size: 12px;
-    }
-    .MuiFormLabel-root {
-        font-size: 12px;
-    }
-    .MuiFormLabel-root.Mui-focused {
-        background: #ffffff!important;
-        color: rgba(0, 0, 0, .75);
-        padding: 0 5px;
-    }
-    .MuiInputLabel-outlined {
-        transform: translate(14px, 12px) scale(1);
-        background: transparent!important;
-    }
-    .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
-        background-color: rgba(82,188,230,.05);
-        border: 1px solid rgba(82,188,230,.5);
-    }
-    .left, .right {
-        width: calc(50% - .375em);
-    }
-    .left {
-        margin-right: .375em;
-    }
-    .right {
-        margin-left: .375em;
-    }
-    .large {
-        width: 100%;
-    }
-    .checkbox_text {
-        color: #666!important;
-        font-size: .75em;
-        line-height: 1.25;
-    }
-    .PrivateSwitchBase-root-152 {
-        padding: 0 10px 0 0;
-    }
-
-
-}
-
-//Agree checkboxes
-.Component-root-145 {
-    color: #ccc !important;
-}
-
-//Hide text Errors
-.inputError {
-    display: none !important;
-}
-
-//Dropdown password window
-.popper {
-    min-width: 420px !important;
-    //left: -71px !important;
-    top: 10px !important;
-}
-.MuiList-root {
-    max-width: 420px;
-    padding: 8px !important;
-    border: 1px solid rgb(240, 72, 42) !important;
-    &.req_list {
-        .MuiListItem-root {
-            font-size: 12px !important;
-            padding: 0;
-            .MuiListItemIcon-root {
-                min-width: initial !important;
-                svg {
-                    width: 17px;
-                    height: 15px;
-                }
-            }
-        }
-    }
-}
-
-//Agree items
-.MuiFormGroup-root {
-    &.checkbox_text {
-        align-items: center;
-        #feebback {
-            display: none;
-        }
-    }
-}
-
-
-//Res Error (Last step => "System could not register you")
-.resError {
-    &.card-title {
-        color: #333;
-        text-align: center;
-    }
-}
-
-.MuiTooltip-popper {
-    max-width: 250px;
-    z-index: 99999 !important;
 }

@@ -102,21 +102,7 @@ export default class MidSection extends Component {
                             {languageManager.second_form_subtitle}
                         </h4>
                         <div className="regform">
-                            <Regform {...this.props}
-                                     loadingLogo={{
-                                         className: 'loading',
-                                         source: logo
-                                     }}
-                                     material={true}
-                                     formSteps={steps}
-                                     responseError={{
-                                         className: 'resError',
-                                         button: {
-                                             className: 'button_forward',
-                                             text: 'OK'
-                                         }
-                                     }}
-                            />
+                            <Regform {...this.props}/>
                         </div>
                     </div>
                 </section>

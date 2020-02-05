@@ -27,22 +27,23 @@
     "phone_number": "Phone",
     
     "button": "Get Access Now",
+    "button_last": "REGISTER NOW",
+    "passtest": {
+      "invalidlength": "The password must be 8 characters long.",
+      "nospecial": "Must not contain special characters.",
+      "nolowercase": "Must contain at least 1 letter.",
+      "nonumber": "Must contain at least 1 number.",
+      "nouppercase": "Must contain at least 1 capital letter."
+    },
     "agreement_first": "I agree to the processing of my email address for the purposes of receiving commercial offers that we believe will be of interest to you on behalf of the companies and industries explicitly detailed in our Privacy Policy",
     "agreement_second": [
       "By filling out and sending us the registration form you agree with the Terms & Conditions and the Privacy Policy",
       "Terms & Conditions",
       "Privacy Policy"
     ],
-    "button_last": "REGISTER NOW",
-    "passtest": [
-      "The password must be 8 characters long.",
-      "Must not contain special characters.",
-      "Must contain at least 1 letter.",
-      "Must contain at least 1 capital letter.",
-      "Must contain at least 1 number."
-    ],
     "more_title": [
-      "Your data is always protected with us.\nYou can change your mind anytime by...\n"
+      "Your data is always protected with us.\nYou can change your mind anytime by...\n",
+      "more"
     ],
     "more_decription": "You can change your mind at any time by clicking on the unsubscribe link in the footer of any email you receive from us. We will treat your information with respect. By clicking above, you agree that we may process your information in accordance with these terms.",
 

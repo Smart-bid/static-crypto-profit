@@ -82,9 +82,14 @@
 
                 }
             }
+            >.form {
+                @media (max-width: 960px) {
+                    flex-basis: 100%;
+                    max-width: 100%;
+                    padding: 0;
+                }
+            }
         }
-
-
     }
 
     .brand-icons {
@@ -106,12 +111,12 @@
             right: 0;
             left: 0;
             background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1;
+            z-index: 999;
         }
         .wrapper {
             max-width: 600px;
             position: fixed;
-            top: calc(800px - 60%);
+            top: calc(50% - 400px);
             right: 0;
             left: 0;
             margin: 0 auto;
@@ -123,6 +128,11 @@
             padding: 60px 40px;
             border-radius: 5px;
             z-index: 9999;
+            @media(max-width: 960px) {
+                height: 100%;
+                top: 0;
+                overflow-y: scroll;
+            }
             .close-btn {
                 position: absolute;
                 top: 25px;

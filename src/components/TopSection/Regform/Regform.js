@@ -1,315 +1,205 @@
-import React, { Component } from 'react'
-import RegInputs from './RegInputs'
-import MaterialInputs from './MaterialInputs'
-import { withRouter, Redirect } from 'react-router-dom'
-import PropTypes from "prop-types"
+import React, {Component} from 'react'
+import IntlTelInput from 'react-intl-tel-input'
+import 'react-intl-tel-input/dist/main.css'
 
-// Material UI
-import { Tooltip } from '@material-ui/core'
- 
-// Reactstrap
-import {
-    Card, CardImg, CardBody,
-    CardTitle, Button, 
-    FormGroup, Input
-} from 'reactstrap'
+import logo from '../Header/logo.svg'
+import {func} from "prop-types";
 
-class Regform extends Component {
-    static propTypes = {
-        match: PropTypes.object.isRequired,
-        location: PropTypes.object.isRequired,
-        history: PropTypes.object.isRequired
-    }
-
+export default class Regform extends Component {
     constructor(props) {
-        super(props)
-
+        super(props);
         this.state = {
-            form: {},
-            errors: {
-                password: {
-                    empty: true
-                }
-            },
-            step: 1
-        }
+            focused: false,
+            firstCheck: false,
+        };
+        this.passtest = {};
+        ['invalidlength', 'nospecial', 'nolowercase', 'nouppercase', 'nonumber'].map((err, index) => this.passtest[err] = this.props.languageManager().passtest[index])
 
-        this.handleForward = this.handleForward.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
-        this.inputValidation = this.inputValidation.bind(this)
-        this.handleBackwards = this.handleBackwards.bind(this)
-        this.inputFocus = this.inputFocus.bind(this)
+        this.inputs = ['first_name', 'last_name'];
     }
 
-    handleForward(formStep) {
-        let validate = this.props.validateParams(this.state.form)
-
-        if (formStep.passTest && formStep.passTest.checkPass) {
-            if (this.state.form.password !== this.state.form.passcheck || !this.state.form.passcheck) validate.success = false
-            else {
-                let tempForm = this.state.form
-                delete tempForm.passcheck
-                this.setState({form: tempForm})
-            }
-        }
-
-        if (validate.success) this.props.setLeadData(this.state.form)
-            .then(() => { if (formStep.firstLeadStep) this.props.handleLeadStep() })
-            .then(() => { if (formStep.button.hasOwnProperty('linkTo')) this.setState({path: formStep.button.linkTo})})
-            .then(() => this.setState({step: this.state.step + 1, errors: {}}, () => {
-                if (this.state.step <= this.props.formSteps.length) {
-                    let tempForm = this.state.form
-                    if (this.props.formSteps[this.state.step - 1].inputs) this.props.formSteps[this.state.step - 1].inputs.map(input => {if (!tempForm[input.name]) tempForm[input.name] = ''})
-                    if (this.props.formSteps[this.state.step - 1].passTest && !tempForm.password) {tempForm.password = ''; if (this.props.formSteps[this.state.step - 1].passTest.checkPass) tempForm.passcheck = ''}
-
-                    this.setState({form: tempForm}, () => {if (this.props.formSteps[this.state.step - 1].passTest) this.inputValidation('password')})
-                }
-            }))
-
-        else this.setState({errors: validate.errors})
-    }
-
-    handleBackwards(backStep) {
-        let tempForm = this.state.form
-        if (this.state.step <= this.props.formSteps.length) {
-            if (this.props.formSteps[this.state.step - 1].inputs) this.props.formSteps[this.state.step - 1].inputs.map(input => delete tempForm[input.name])
-            if (this.props.formSteps[this.state.step - 1].passTest) {delete tempForm.passcheck; delete tempForm.password}
-        }
-
-        this.setState({step: backStep, form: tempForm}, () => {
-            if (this.props.formSteps[this.state.step - 1].inputs) this.props.formSteps[this.state.step - 1].inputs.map(input => tempForm[input.name] = '')
-            if (this.props.formSteps[this.state.step - 1].passTest) {tempForm.password = ''}
-        })
-    }
-
-    handleSubmit() {
-        let validate = this.props.validateParams(this.state.form)
-
-        if (validate.success) this.props.setLeadData(this.state.form)
-            .then(() => this.setState({step: this.state.step + 1}))
-            .then(this.props.handleSubmit)
-            .then(res => { if (res.redirectUrl) {window.location = res.redirectUrl} else {this.setState({responseError: res.error})} })
-
-        else this.setState({errors: validate.errors})
-    }
-
-    inputValidation(key) {
-        let valid = this.props.validateInput({[key]: this.state.form[key]})
-        this.setState({errors: valid})
-    }
-
-    inputFocus(key) {
-        let tempErrors = this.state.errors
-        delete tempErrors[key]
-        this.setState({errors: tempErrors})
-    }
-
-    componentDidMount() {
-        this.props.formSteps.map((formStep, index) => {
-            if (formStep.passTest && this.state.step === index + 1) this.setState({form: Object.assign(this.state.form, {password: ''}, () => this.inputValidation('password'))})
-            if (formStep.inputs && this.state.step === index + 1) formStep.inputs.map(input => {
-                let obj = {},
-                    tempForm = this.state.form
-                obj[input.name] = ''
-                this.setState({form: Object.assign(tempForm, obj)})
-            })
-        })
-    }
-
-    render() {
-        let version = this.props.languageManager(),
-            currentStep = this.state.step,
-            material = this.props.material,
-            steps = this.props.formSteps,
-            errors = this.state.errors,
-            form = this.state.form,
-            resError = this.props.responseError
-
-        if (!this.state.path) {
-            return (
-                <Card className={this.props.formClass}>
-                    {(currentStep <= steps.length) ? 
-                    <div>
-                        {(this.props.mainLogo && 
-                            <CardImg className={this.props.mainLogo.className} top src={this.props.mainLogo.source} alt='Logo'/>)}
-
-                        {(this.props.formTitle && 
-                            <CardTitle className={this.props.formTitle.className}>{this.props.formTitle.text}</CardTitle>)}
-
-                        {(this.props.stepButtons && 
-                            <StepButtons 
-                                steps={steps.length}
-                                currentStep={currentStep}
-                                onClick={step => this.handleBackwards(step)}
-                                stepButtons={this.props.stepButtons}/>
-                        )}
-
-                        <div>
-                            {
-                                steps.map((formStep, index) => 
-                                    <CardBody key={index} className={formStep.className} style={{
-                                        transition: 'margin 0.3s ease-out',
-                                        justifyContent: 'center',
-                                        marginLeft: (currentStep > index + 1) ? '-100%' : ''
-                                    }}>
-
-                                        {(formStep.inputs &&
-
-                                            (material
-                                                ?
-                                            <MaterialInputs 
-                                                {...formStep}
-                                                trackStartEdit={this.props.trackStartEdit}
-                                                inputValidation={this.inputValidation}
-                                                countryCode={this.props.countryCode}
-                                                form={form}
-                                                languageManager={version}
-                                                errors={errors}
-                                                onChange={form => this.setState({form})} 
-                                                onFocus={key => this.inputFocus(key)} />
-                                                :
-                                            <RegInputs
-                                                {...formStep}
-                                                trackStartEdit={this.props.trackStartEdit}
-                                                form={form}
-                                                languageManager={version}
-                                                errors={errors}
-                                                onChange={form => this.setState({form})} 
-                                                onFocus={key => this.inputFocus(key)} /> 
-
-                                        ))}
-
-                                        {(formStep.passTest &&
-                                            
-                                            <PassTest 
-                                                {...formStep.passTest}
-                                                form={form}
-                                                languageManager={version}
-                                                onChange={form => this.setState({form}, () => this.inputValidation('password'))}
-                                                errors={errors}/>
-                                                
-                                        )}
-
-                                        <Button onClick={() => (index + 1 === steps.length) ? this.handleSubmit() : this.handleForward(formStep)} className={formStep.button.className}>{formStep.button.text}</Button>
-
-                                        {(formStep.supportText)
-                                            ?
-                                            <div className={formStep.supportText.className}>
-
-                                                {(formStep.supportText.img) ? <img src={formStep.supportText.img}/> : <React.Fragment></React.Fragment> }
-                                                <span className="lock-icon">{formStep.supportText.main}</span>
-                                                {(formStep.supportText.tooltip)
-                                                    ?
-                                                <span>
-                                                    <Tooltip title={formStep.supportText.tooltip} placement="top">
-                                                        <span style={{textDecoration: 'underline dotted', cursor: 'pointer'}}> more</span>
-                                                    </Tooltip>
-                                                </span> : <React.Fragment></React.Fragment>}
-
-                                            </div> : <React.Fragment></React.Fragment>
-                                        }
-                                    
-                                    </CardBody>)
-                            }
-                        </div>
-                    </div> :
-                    <div>
-                            
-                            {(!this.state.responseError) ?
-
-                            <CardImg className={this.props.loadingLogo.className} top src={this.props.loadingLogo.source} alt='loading'/> :
-
-                            <CardBody style={{
-                                display: 'flex',
-                                flexDirection: 'column',
-                                justifyContent: 'center',
-                            }}>
-
-                                <CardTitle className={resError.className}>{this.state.responseError}</CardTitle>
-                                <Button onClick={() => this.handleBackwards(1)} className={resError.button.class}>{resError.button.text}</Button>
-
-                            </CardBody>
-                            }
-                            
-                        
-                    </div>
-                    }
-                </Card>
-            ) 
-        } else return <Redirect to={{ pathname: this.state.path, search: this.props.location.search, state: this.state}}/>
-    }
-}
-
-
-function StepButtons(props) {
-
-    let arr = []
-    for (let i=1; i <= props.steps; i++) {
-        arr.push(
-            <Button 
-                key={i}
-                className={(i + 1 > props.currentStep) ? props.stepButtons.mainClass : props.stepButtons.disabledClass} 
-                disabled={(i + 1 > props.currentStep)}
-                onClick={() => props.onClick(i)}>{(props.stepButtons.withNumber && i)}</Button>
-        )
-    }
-
-    return <div className={props.stepButtons.className}>{arr}</div>
-}
-
-function PassTest(props) {
-
-    function passTest(value, key) {
+    updateValue(value, key, callback) {
         let obj = {},
-            tempForm = props.form
+            tempForm = this.props.syncState.form
         obj[key] = value
         Object.assign(tempForm, obj)
 
-        return props.onChange(tempForm)
+        new Promise((resolve, reject) => resolve(this.props.syncForms(tempForm))).then(callback)
     }
 
-    let passtest = {};
-    ['invalidlength', 'nospecial', 'nolowercase', 'nouppercase', 'nonumber'].map((err, index) => passtest[err] = props.languageManager.passtest[index])
+    /*handleForward() {
+        let validate = this.props.validateParams(this.props.syncState.form)
 
+        if (validate.success)
+            this.props.setLeadData(this.props.syncState.form)
+                .then(this.props.handleStep(this.props.syncState.step + 1))
+                .then(() => {
+                    if (this.props.syncState.step === 2) this.props.handleLeadStep()
+                })
+                .then(() => this.props.syncErrors({password: {empty: true}}))
+        else this.props.syncErrors(validate.errors)
+    }*/
 
-    return (
-        <FormGroup className={props.groupClass}>
+    handleSubmit() {
+        let validate = this.props.validateParams(this.props.syncState.form)
+        if (validate.success && this.props.syncState.form.agreementCheck)
+            this.props.setLeadData(this.props.syncState.form)
+                .then(this.props.handleStep(this.props.syncState.step + 1))
+                .then(this.props.handleSubmit)
+                .then(res => (res.redirectUrl) ? window.location = res.redirectUrl : this.props.syncErrors({responseError: res.error}))
+        else this.props.syncErrors(validate.errors)
+    }
 
-            <Input className={props.className}
-                maxLength={(props.maxLength) ? props.maxLength : '32'}
-                type={'password'}
-                name={'password'}
-                autoComplete="off"
-                value={(props.form['password'] || '')}
-                defaultValue={(props.form['password'] && props.form['password'])}
-                valid={(props.form.hasOwnProperty('passcheck') && (props.form.password === props.form.passcheck) && (props.form.passcheck.length >= 8))}
-                onChange={e => passTest(e.target.value, e.target.name)}
-                placeholder={props.languageManager['password']}/>
+    checkPass(pass) {
+        let valid = this.props.validateInput({password: pass})
+        this.props.syncErrors(valid)
+    }
 
-            {props.checkPass && 
+    //Focus Phone
+    focusPhone() {
+        this.setState({focused: true})
+    }
 
-            <Input className={props.className}
-                type={'password'}
-                name={'passcheck'}
-                value={(props.form['passcheck'] || '')}
-                valid={(props.form.hasOwnProperty('passcheck') && (props.form.password === props.form.passcheck) && (props.form.passcheck.length >= 8))}
-                placeholder={props.languageManager['passcheck']}
-                onChange={e => passTest(e.target.value, e.target.name)}/>}
+    unFocusPhone() {
+        this.setState({focused: !this.state.focused})
+    }
 
-            {(props.withList &&
-                <ul>
-                    {Object.keys(passtest).map(key => {
-                        return (<li className={(props.errors.hasOwnProperty('password') && (props.errors.password[key] || props.errors.password.empty)) ? '' : 'ok'} key={key}>{passtest[key]}</li>)
-                    })}
-                </ul>
-            )}
+    render() {
+        let languageManager = this.props.languageManager();
 
+        if (this.props.syncState.step === 1) {
+            return (
+                <div className="Regform">
+                    <div className='inner'>
 
-        </FormGroup>
-    ) 
+                        <div className='form-wrapper one'>
+                            <div className="form-group flex">
+                                {this.inputs.map((input, index) => {
+                                    return (
+                                        <div className="form-input" key={index}>
+
+                                            <input
+                                                className={'form-control ' + input}
+                                                type="text" name={input}
+                                                placeholder={languageManager[input]}
+                                                value={this.props.syncState.form[input]}
+                                                onChange={(e) => this.updateValue(e.target.value, input)}/>
+
+                                            {((this.props.syncState.errors[input] && this.props.syncState.errors[input].messages)) ?
+                                                <div
+                                                    className={(this.props.syncState.errors[input].messages) ? 'error active' : 'error'}>
+                                                    <span>{this.props.syncState.errors[input].messages[0]}</span>
+                                                </div> : ''}
+                                            <label className="like-placeholder">{languageManager[input]}</label>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                            <div className="form-group">
+                                <div className="form-input">
+                                    <input
+                                        className="form-control email"
+                                        type="text" name="email"
+                                        placeholder={languageManager.email}
+                                        value={this.props.syncState.form.email}
+                                        onChange={(e) => this.updateValue(e.target.value, 'email')}/>
+
+                                    {(this.props.syncState.errors.email && this.props.syncState.errors.email.messages) ?
+                                        <div
+                                            className={(this.props.syncState.errors.email.messages) ? 'error active' : 'error'}>
+                                            <span>{this.props.syncState.errors.email.messages[0]}</span>
+                                        </div> : ''}
+                                    <label className="like-placeholder">{languageManager.email}</label>
+                                </div>
+                            </div>
+                            <div className="form-group flex">
+                                <div className={this.state.focused ? 'form-input focused' : 'form-input'}
+                                     onFocus={this.focusPhone.bind(this)} onBlur={this.unFocusPhone.bind(this)}>
+                                    <IntlTelInput
+                                        preferredCountries={[this.props.countryCode]}
+                                        defaultCountry={this.props.countryCode.toLowerCase()}
+                                        containerClassName="intl-tel-input"
+                                        inputClassName="form-control tel"
+                                        autoPlaceholder={true}
+                                        //separateDialCode={true}
+                                        value={this.props.syncState.form.phone_number}
+                                        onPhoneNumberChange={(e, value) => this.updateValue(value.replace(/\D/g, ''), 'phone_number')}
+                                    />
+                                    <label className="like-placeholder">{languageManager.phone_number}</label>
+                                </div>
+                                <div className="form-input password">
+                                    <input
+                                        className="form-control password"
+                                        type="password" name="password"
+                                        placeholder={languageManager.password}
+                                        value={this.props.syncState.form.password}
+                                        onChange={(e) => this.updateValue(e.target.value, 'password', this.checkPass(e.target.value))}/>
+                                    <label className="like-placeholder">{languageManager.password}</label>
+
+                                    <ul className='req'>
+                                        {Object.keys(this.passtest).map(key => {
+                                            return (
+                                                <li className={(this.props.syncState.errors.password && (this.props.syncState.errors.password[key] || this.props.syncState.errors.password.empty)) ? 'default' : 'correct'}
+                                                    key={key}>{languageManager.passtest[key]}</li>)
+                                        })}
+                                    </ul>
+                                </div>
+                            </div>
+                            <div className="form-group">
+                                <div className="form-input agreement">
+                                    <input type="checkbox" checked={this.state.firstCheck} onChange={() => {}}/>
+                                    <label onClick={() => this.setState({firstCheck: !this.state.firstCheck})}>
+                                        {languageManager.agreement_first}
+                                    </label>
+                                </div>
+                            </div>
+                            <div className="form-group">
+                                <div className={(this.props.syncState.form.agreementCheck) ? 'form-input agreement' : 'form-input agreement error'}>
+                                    <input type="checkbox" checked={this.props.syncState.form.agreementCheck} onChange={() => {}}/>
+                                    <label
+                                        onClick={() => this.updateValue(!this.props.syncState.form.agreementCheck, 'agreementCheck')}>
+                                        {languageManager.agreement_second}
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div className="form-group">
+                                <button onClick={this.handleSubmit.bind(this)} className="registerBtn">
+                                    <span>{languageManager.button}</span>
+                                </button>
+                            </div>
+
+                            <div className="notification">
+                                <div className="info">
+                                    <p>
+                                        {languageManager.more_title[0]}
+                                    </p>
+                                    <div className="dropdown-btn">
+                                        <span>{languageManager.more_title[1]}</span>
+                                        <div className="dropdown">
+                                            <p>
+                                                {languageManager.more_decription}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            )
+        } else {
+            return (
+                <div className="Regform">
+                    {(this.props.syncState.errors.responseError) ?
+                        <div className="response-error">
+                            <p>{this.props.syncState.errors.responseError}</p>
+                            <button className="btn-ok" onClick={() => this.props.handleStep(1)}>Ok</button>
+                        </div>
+                        : <img src={logo} alt="lodaing" className="loading-logo"/>}
+                </div>
+            )
+        }
+    }
 }
-
-export default withRouter(Regform)
-
-
-

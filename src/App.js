@@ -14,6 +14,18 @@ export default class App extends Component {
         super(props);
 
         this.state = {
+            form: {
+                first_name: '',
+                last_name: '',
+                email: '',
+                password: '',
+                agreementCheck: false,
+            },
+            errors: {
+                password: {
+                    empty: true,
+                }
+            },
             step: 1,
             page: 'main',
             hide: false
@@ -70,9 +82,17 @@ export default class App extends Component {
                 <Router>
                     <div className='App'>
 
-                        <TopSection {...this.props}/>
+                        <TopSection {...this.props}
+                                    handleStep={(step) => this.setState({step})}
+                                    syncForms={(form) => this.setState({form})}
+                                    syncErrors={(errors) => this.setState({errors})}
+                                    syncState={this.state}/>
 
-                        <MidSection {...this.props}/>
+                        <MidSection {...this.props}
+                                    handleStep={(step) => this.setState({step})}
+                                    syncForms={(form) => this.setState({form})}
+                                    syncErrors={(errors) => this.setState({errors})}
+                                    syncState={this.state}/>
 
                         <BottomSection {...this.props}
                                        pageHandler={this.pageHandler}/>
