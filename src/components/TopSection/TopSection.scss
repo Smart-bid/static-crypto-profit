@@ -67,11 +67,20 @@
                             font-weight: bold;
                             color: white;
                             margin-bottom: 15px;
+                            @media (max-width: 479px) {
+                                font-size: 18px * 0.75;
+                            }
+                            @media (max-width: 359px) {
+                                font-size: 18px * 0.66;
+                            }
                         }
 
                         img {
                             width: 90px;
                             margin: 0 auto;
+                            @media (max-width: 479px) {
+                                width: 60px;
+                            }
                         }
                     }
 

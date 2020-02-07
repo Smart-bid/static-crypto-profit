@@ -27,6 +27,8 @@ export default class TopSection extends Component {
         }, 5000)
     }
 
+
+
     closeModalWindow = () => {
         this.setState({showModal: false})
         this.body.classList.remove("fixed");
@@ -123,35 +125,20 @@ export default class TopSection extends Component {
                         </div>
                         <div className="text-zone">
                             <h4>
-                                Wait! <br/>
+                                {languageManager.modal_title[0]}<br/>
                                 <small>
-                                    Before you leave...
+                                    {languageManager.modal_title[1]}
                                 </small>
                             </h4>
                             <p>
-                                The markets are moving fast. Don’t miss out on your chance to profit from the latest rises and falls.
+                                {languageManager.modal_subtitle[0]}
                             </p>
                             <p>
-                                Register today and join the thousands of people changing their lives thanks to online trading.
+                                {languageManager.modal_subtitle[1]}
                             </p>
                         </div>
                         <div className="regform">
                             <Regform {...this.props}/>
-                            {/*<Regform {...this.props}*/}
-                            {/*         loadingLogo={{*/}
-                            {/*             className: 'loading',*/}
-                            {/*             source: logo*/}
-                            {/*         }}*/}
-                            {/*         material={true}*/}
-                            {/*         formSteps={steps}*/}
-                            {/*         responseError={{*/}
-                            {/*             className: 'resError',*/}
-                            {/*             button: {*/}
-                            {/*                 className: 'button_forward',*/}
-                            {/*                 text: 'OK'*/}
-                            {/*             }*/}
-                            {/*         }}*/}
-                            {/*/>*/}
                         </div>
                     </div>
                 </div>

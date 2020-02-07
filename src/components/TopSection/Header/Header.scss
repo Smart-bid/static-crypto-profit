@@ -33,10 +33,16 @@
                 @media (max-width: 1280px) {
                     font-size: 40px;
                 }
+                @media (max-width: 479px) {
+                    font-size: 26px;
+                }
             }
             h2 {
                 font-size: 28px;
                 color: #fff;
+                @media (max-width: 479px) {
+                    font-size: 24px;
+                }
                 span {
                     display: inline-block;
                     background-color: $blue;

@@ -11,6 +11,7 @@ export default class Regform extends Component {
         this.state = {
             focused: false,
             firstCheck: false,
+            showText: false
         };
         this.passtest = {};
         ['invalidlength', 'nospecial', 'nolowercase', 'nouppercase', 'nonumber'].map((err, index) => this.passtest[err] = this.props.languageManager().passtest[index])
@@ -26,19 +27,6 @@ export default class Regform extends Component {
 
         new Promise((resolve, reject) => resolve(this.props.syncForms(tempForm))).then(callback)
     }
-
-    /*handleForward() {
-        let validate = this.props.validateParams(this.props.syncState.form)
-
-        if (validate.success)
-            this.props.setLeadData(this.props.syncState.form)
-                .then(this.props.handleStep(this.props.syncState.step + 1))
-                .then(() => {
-                    if (this.props.syncState.step === 2) this.props.handleLeadStep()
-                })
-                .then(() => this.props.syncErrors({password: {empty: true}}))
-        else this.props.syncErrors(validate.errors)
-    }*/
 
     handleSubmit() {
         let validate = this.props.validateParams(this.props.syncState.form)
@@ -130,11 +118,12 @@ export default class Regform extends Component {
                                 <div className="form-input password">
                                     <input
                                         className="form-control password"
-                                        type="password" name="password"
+                                        type={this.state.showText ? 'text' : 'password'} name="password"
                                         placeholder={languageManager.password}
                                         value={this.props.syncState.form.password}
                                         onChange={(e) => this.updateValue(e.target.value, 'password', this.checkPass(e.target.value))}/>
                                     <label className="like-placeholder">{languageManager.password}</label>
+                                    <span className="showPass" onClick={() => this.setState({showText: !this.state.showText})} > </span>
 
                                     <ul className='req'>
                                         {Object.keys(this.passtest).map(key => {
@@ -145,7 +134,7 @@ export default class Regform extends Component {
                                     </ul>
                                 </div>
                             </div>
-                            <div className="form-group">
+                            <div className="form-group agreement">
                                 <div className="form-input agreement">
                                     <input type="checkbox" checked={this.state.firstCheck} onChange={() => {}}/>
                                     <label onClick={() => this.setState({firstCheck: !this.state.firstCheck})}>
@@ -158,7 +147,7 @@ export default class Regform extends Component {
                                     <input type="checkbox" checked={this.props.syncState.form.agreementCheck} onChange={() => {}}/>
                                     <label
                                         onClick={() => this.updateValue(!this.props.syncState.form.agreementCheck, 'agreementCheck')}>
-                                        {languageManager.agreement_second}
+                                        {languageManager.agreement_second[0]}
                                     </label>
                                 </div>
                             </div>

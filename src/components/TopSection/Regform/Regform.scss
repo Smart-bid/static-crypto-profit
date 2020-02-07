@@ -4,6 +4,7 @@
         max-width: 100%;
     }
     .reg-title {
+        width: 100%;
         position: absolute;
         top: -80px;
         padding: 15px 20px;
@@ -47,6 +48,9 @@
                 position: relative;
                 .form-group {
                     margin-bottom: 13px;
+                    &.agreement {
+                        margin-bottom: 0;
+                    }
                     &.flex {
                         display: flex;
                         justify-content: space-between;
@@ -91,7 +95,7 @@
                                     transform: translateX(4px) translateY(-8px);
                                 }
                             }
-                            &[type="password"] {
+                            &.password {
                                 &:focus {
                                     ~ label {
                                         transform: translateX(4px) translateY(-40px);
@@ -149,6 +153,19 @@
                                                 transform: rotate(45deg);
                                             }
                                         }
+                                    }
+                                }
+                                ~ .showPass {
+                                    position: absolute;
+                                    right: 10px;
+                                    width: 22px;
+                                    height: 22px;
+                                    margin-top: -27px;
+                                    background-image: url("./eye.svg");
+                                    background-size: contain;
+                                    cursor: pointer;
+                                    &:active {
+                                        transform: translateY(2px);
                                     }
                                 }
                             }
