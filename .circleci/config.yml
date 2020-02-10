@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:12.9.1-browsers
-    working_directory: ~/btcprofittoday.com
+    working_directory: ~/cryptoprofitsuccess.com
     steps:
       - checkout
       - add_ssh_keys
@@ -27,7 +27,7 @@ jobs:
       - run:
           name: deploy via scp
           command: |
-            scp -r ~/btcprofittoday.com/build/* admin@95.216.16.250:~/web/btcprofittoday.com/public_html
+            scp -r ~/cryptoprofitsuccess.com/build/* admin@95.216.16.250:~/web/cryptoprofitsuccess.com/public_html
 workflows:
   version: 2.1
   build-and-deploy:
